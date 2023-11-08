@@ -18,12 +18,15 @@
 - Stateless widget merupakan widget yang tidak memeiliki keadaan state yang dapat berubah
 - Stateless widget tidak dapat memperbarui atau merender ulang diri mereka sendiri
 - stateless widget berguna jika ingin memiliki bagian antarmuka yang tidak akan berubah dan tidak memerlukan pembaruan berdasarkan input
+Contoh : ikon, gambar
 
 **Stateful widget**
 <br/>
 - Stateful widget merupakan widget yang memiliki keadaan state yang dapat berubah selama siklus hidupnya
 - Stateful widget dapat merender diri mereka sendiri ketika terjadi perubahan dalam statenya
 - Stateful widget berguna jika ingin mengubah tampilan widget berdasarkan input atau perubahan keadaan
+Contoh : chatbox, textfield
+
 
 ## 2. Sebutkan seluruh widget yang kamu gunakan untuk menyelesaikan tugas ini dan jelaskan fungsinya masing-masing.
 
@@ -32,7 +35,7 @@
   
         Widget utama yang digunakan sebagai entry point dari aplikasi ini. MyApp adalah turunan dari StatelessWidget.
 
-   - MateriaApp
+   - MaterialApp
 
         MaterialApp adalah widget yang digunakan sebagai root dari seluruh antarmuka aplikasi Flutter. Ini adalah widget yang pertama kali dibangun dalam pohon widget, dan mengatur banyak konfigurasi yang mempengaruhi seluruh aplikasi. 
 
@@ -50,6 +53,8 @@
         Scaffold adalah widget yang digunakan untuk membuat kerangka antarmuka umum yang mengikuti pedoman desain Material Design.
     
     - AppBar
+
+        AppBar adalah widget yang berfungsi untuk membuat dan mengatur app bar dalam aplikasi, serta melakukan kustomisai app bar 
 
     - Text
   
@@ -93,7 +98,7 @@
     
     - Material
 
-        Widget yang menyediakan desain visual.
+       Material mencakup gaya, tata letak, komponen, dan pedoman desain yang digunakan untuk membangun aplikasi
 
 ## 3. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 
