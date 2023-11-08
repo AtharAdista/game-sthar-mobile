@@ -99,6 +99,15 @@ Contoh : chatbox, textfield
     - Material
 
        Material mencakup gaya, tata letak, komponen, dan pedoman desain yang digunakan untuk membangun aplikasi
+    
+    - ShopCard
+
+        Extend statelesswidget.
+
+    - ScaffoldMessenger
+       
+       Untuk mengontrol pesan dari Snackbar.
+       
 
 ## 3. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 
