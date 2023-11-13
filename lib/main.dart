@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:game_sthar/menu.dart';
+import 'package:game_sthar/screens/menu.dart';
 
 
 

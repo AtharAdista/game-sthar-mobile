@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:game_sthar/screens/gamelist_form.dart';
+import 'package:game_sthar/widgets/game_card.dart';
+import 'package:game_sthar/widgets/left_drawer.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
@@ -27,7 +30,9 @@ class MyHomePage extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.indigo,
+        foregroundColor: Colors.white,
       ),
+      drawer: const LeftDrawer(),
       body: SingleChildScrollView(
         // Widget wrapper yang dapat discroll
         child: Padding(
@@ -88,6 +93,11 @@ class ShopCard extends StatelessWidget {
               content: Text("Kamu telah menekan tombol ${item.name}!"),
               backgroundColor: getColorDependsItem(item.name),
             ));
+             if (item.name == "Tambah Item") {
+              Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => const ShopFormPage()));
+            }
         },
         child: Container(
           // Container untuk menyimpan Icon dan Text
@@ -127,9 +137,3 @@ Color getColorDependsItem(String itemName) {
   return Colors.black;
 }
 
-class ShopItem {
-  final String name;
-  final IconData icon;
-
-  ShopItem(this.name, this.icon);
-}
