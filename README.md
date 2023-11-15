@@ -251,3 +251,443 @@ Contoh : chatbox, textfield
   
 
   </details>
+
+<details>
+  <summary> 
+     WEEK 08 : Flutter Navigation, Layouts, Forms, and Input Elements
+  </summary>
+
+## 1. Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!
+
+<b>Push</b></br>
+Method push() menambahkan suatu route ke dalam stack route yang dikelola oleh Navigator. Method ini menyebabkan route yang ditambahkan berada pada paling atas stack, sehingga route yang baru saja ditambahkan tersebut akan muncul dan ditampilkan kepada pengguna.
+
+<b>pushReplacement</b></br>
+Method pushReplacement() menghapus route yang sedang ditampilkan kepada pengguna dan menggantinya dengan suatu route. Method ini menyebabkan aplikasi untuk berpindah dari route yang sedang ditampilkan kepada pengguna ke suatu route yang diberikan. Pada stack route yang dikelola Navigator, route lama pada atas stack akan digantikan secara langsung oleh route baru yang diberikan tanpa mengubah kondisi elemen stack yang berada di bawahnya.
+
+
+Perbedaan keduanya adalah `push()` akan menambahkan route baru diatas route yang sudah ada pada atas stack, sedangkan `pushReplacement()` menggantikan route yang sudah ada pada atas stack dengan route baru tersebut.
+
+penggunaan `push()` dan `pushReplacement()` tergantung dengan kebutuhan, jika kita ingin dapat menekan tombol back dan kembali ke route sebelumnya maka `push()` dapat dipilih, `push()` contohnya digunakan ketika kita ingin add suatu barang, keika dapat menekan back jika tidak jadi add suatu barang. Sedangkan jika kita tidak ingin kembali ke route sebelumnya dengan menekan back, maka `pushReplacement()` dapat dipilih, `pushReplacement()` contoh penggunaannya adalah ketika register.
+
+## 2. Jelaskan masing-masing layout widget pada Flutter dan konteks penggunaannya masing-masing!
+
+<b>Single-child layout widgets</b></br>
+Single child layout widget adalah suatu widget yang hanya dapat memiliki satu widget anak di dalam widget parentnya. Digunakan jika hanya membutuhkan satu widget anak saja
+
++ Align </br> 
+  Ini adalah widget yang menyelaraskan widget anak di dalamnya dan mengukurnya berdasarkan ukuran anak. Ini memberikan kontrol lebih besar untuk menempatkan widget anak tepat di posisi yang diinginkan.
++ Center </br>
+  Widget ini memungkinkan Anda memusatkan widget anak di dalamnya
++ ConstrainedBox</br> 
+  Ini adalah widget yang memungkinkan Anda memaksakan batasan tambahan pada widget turunannya. Artinya Anda dapat memaksa widget anak memiliki batasan tertentu tanpa mengubah properti widget anak.
++ Container </br> 
+  Widget praktis yang menggabungkan pengecatan umum, pemosisian, dan ukuran widget.
++ CustomSingleChildLayout </br> 
+  Ini adalah widget, yang mengubah tata letak anak tunggal menjadi delegasi. Delegasi memutuskan untuk memposisikan widget anak dan juga digunakan untuk menentukan ukuran widget induk.
++ Expanded </br> 
+  Memungkinkan untuk membuat turunan widget Baris dan Kolom menempati area semaksimal mungkin.
++ FittedBox </br>
+  Ini menskalakan dan memposisikan widget anak sesuai dengan fit yang ditentukan.
++ FractionallySizedBox </br>
+  widget untuk menentukan ukuran relatif dari kotaknya berdasarkan ukuran induk yang mengandungnya. User dapat mengatur lebar, tinggi, atau keduanya sebagai persentase dari ukuran induk.
++ IntrinsicHeight </br> 
+  merupakan widget yang memungkinkan widget turunannya menentukan tinggi sendiri berdasarkan dimensi intrinsiknya. Digunakan jika ingin memastikan bawha widget di satu kolom memiliki tinggi yang sama.
++ IntrinsicWidth </br>
+  merupakan widget yang memungkinkan widget turunannya menentukan lebar sendiri berdasarkan dimensi intrinsiknya. Digunakan jika ingin memastikan widget di satu baris memeiliki lebar yang sama.
++ LimitedBox </br> 
+  Sebuah kotak yang membatasi ukurannya hanya jika tidak dibatasi.
++ Offstage </br>
+  Jika kita ingin menyembunyikan atau menampilkan widget tertentu sesuai dengan tindakan pengguna.
++ OverflowBox </br>
++ Padding </br> 
+  Merupakan widget yang digunakan untuk mengatur widget turunannya berdasarkan padding yang diberikan.
++ SizedBox </br>
+  Kotak sederhana dengan ukuran tertentu
++ SizedOverflowBox </br>
+  Widget dengan ukuran tertentu namun meneruskan batasan aslinya ke turunannya, yang kemudian dapat overflow
++ Transform </br> 
+  Menerapkan transformasi ke anaknya.
+  
+
+<b>Multi-child layout widgets</b></br>
+Multi child layout adalah widget yang dapat menampung lebih dari satu widget anak. Digunakan ketika membutuhkan banyak widget anak dalam satu widget parent.
++ Column
++ CustomMultiChildLayout
++ Flow
++ GridView
++ IndexedStack
++ LayoutBuilder
++ ListBody
++ ListView
++ Row
++ Stack
++ Table
++ Wrap
+
+<b>Sliver widgets</b></br>
+Sliver widgets adalah widgets yang berhubungan dengan scroll. Digunakan jika ingin membuat elemen antarmuka pengguna yang dapat di scroll
++ CupertinoSliverNavigationBar
++ CustomScrollView
++ SliverAppBar
++ SliverChildBuilderDelegate
++ SliverChildListDelegate
++ SliverFixedExtentList
+
+
+
+## 3. Sebutkan apa saja elemen input pada form yang kamu pakai pada tugas kali ini dan jelaskan mengapa kamu menggunakan elemen input tersebut!
+
+1. Form : wadah untuk mengelompokkan beberapa bagian(input) formulir, di sini kita bisa meletekkan TextFormField untuk meminta jawaban dari user.
+   
+2. TextFormField : digunakan di dalam form tempat user dapat menginput jawaban 
+
+## 4. Bagaimana penerapan clean architecture pada aplikasi Flutter?
+
+Dengan mengelompokkan kode kedalam suatu folder berdasarkan kegunaannya.
+1. model -> berisi definisi kelas atau objek yang mewakili struktur data atau konsep bisnis dalam aplikasi.
+2. screens --> berisi tampilan atau layar-layar dalam aplikasi flutter
+3. widgets --> komponen-komponen UI atau widget yang dapat digunakan kembali di berbagai bagian aplikasi
+
+
+## 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)
++ [x] Membuat minimal satu halaman baru pada aplikasi.
+  +  pada folder `lib` buat folder baru yang bernama `screens` untuk menyimpan file yang berhubungan dengan tampilan, kemudian buat suatu file baru agar kita dapat membuat form.
+  + Tambahkan kode berikut pada form agar dapat mempunyai input sesuai keinginan dan mempunyai tombol save
+    ```
+    import 'package:flutter/material.dart';
+    import 'package:game_sthar/widgets/left_drawer.dart';
+    import '../model/item.dart';
+
+    class ShopFormPage extends StatefulWidget {
+      const ShopFormPage({super.key});
+
+      @override
+      State<ShopFormPage> createState() => _ShopFormPageState();
+    }
+
+    List<ItemData> productList = [];
+
+
+    class _ShopFormPageState extends State<ShopFormPage> {
+      final _formKey = GlobalKey<FormState>();
+      String _name = "";
+      int _price = 0;
+      int _amount = 0;
+      String _description = "";
+      String _platform = "";
+      String _genre = "";
+
+
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          appBar: AppBar(
+            title: const Center(
+              child: Text(
+                'Form Tambah Produk',
+              ),
+            ),
+            backgroundColor: Colors.indigo,
+            foregroundColor: Colors.white,
+          ),
+          drawer: LeftDrawer(),
+          body: Form(
+            key: _formKey,
+            child: SingleChildScrollView(
+              child:
+                  Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "Judul",
+                      labelText: "Judul",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                    onChanged: (String? value) {
+                      setState(() {
+                        _name = value!;
+                      });
+                    },
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return "Judul tidak boleh kosong!";
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "Genre",
+                      labelText: "Genre",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                    onChanged: (String? value) {
+                      setState(() {
+                        _genre = value!;
+                      });
+                    },
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return "Genre tidak boleh kosong!";
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "Platform",
+                      labelText: "Paltform",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                    onChanged: (String? value) {
+                      setState(() {
+                        _platform = value!;
+                      });
+                    },
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return "Platform tidak boleh kosong!";
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "Stock",
+                      labelText: "Stock",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                    onChanged: (String? value) {
+                      setState(() {
+                        _amount = int.parse(value!);
+                      });
+                    },
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return "Stock tidak boleh kosong!";
+                      }
+                      if (int.tryParse(value) == null) {
+                        return "Stock harus berupa angka!";
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "Harga",
+                      labelText: "Harga",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                    onChanged: (String? value) {
+                      setState(() {
+                        _price = int.parse(value!);
+                      });
+                    },
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return "Harga tidak boleh kosong!";
+                      }
+                      if (int.tryParse(value) == null) {
+                        return "Harga harus berupa angka!";
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "Deskripsi",
+                      labelText: "Deskripsi",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                    onChanged: (String? value) {
+                      setState(() {
+                        _description = value!;
+                      });
+                    },
+                    validator: (String? value) {
+                      if (value == null || value.isEmpty) {
+                        return "Deskripsi tidak boleh kosong!";
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.indigo),
+                      ),
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          // Create a new ItemData object
+                          ItemData newItem = ItemData(
+                            id:  UniqueKey().toString(),
+                            judul: _name,
+                            harga: _price,
+                            jumlah: _amount,
+                            deskripsi: _description,
+                            platform: _platform,
+                            genre: _genre,
+                          );
+
+                          // Add the new item to the list
+                          productList.add(newItem);
+                        }
+                        if (_formKey.currentState!.validate()) {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: const Text('Produk berhasil tersimpan'),
+                                content: SingleChildScrollView(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Nama: $_name'),
+                                      Text('Genre: $_genre'),
+                                      Text('Platform: $_platform'),
+                                      Text('Jumlah: $_amount'),
+                                      Text('Price: $_price'),
+                                      Text('Description: $_description')
+                                    ],
+                                  ),
+                                ),
+                                actions: [
+                                  TextButton(
+                                    child: const Text('OK'),
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                          _formKey.currentState!.reset();
+                        }
+                      },
+                      child: const Text(
+                        "Save",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+              ]),
+            ),
+          ),
+        );
+      }
+    }
+
+    ```
++ [x] Mengarahkan pengguna ke halaman form tambah item baru ketika menekan tombol Tambah Item pada halaman utama.
+  + pada `menu.dart` tamabahkan kode berikut pada `ontap()` agar ketika button ditekan dia melakukan perintah yang sesuai
+    ```
+      if (item.name == "Tambah Item") {
+              Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => const ShopFormPage()));
+            }
+    ```
++ [x] Memunculkan data sesuai isi dari formulir yang diisi dalam sebuah pop-up setelah menekan tombol Save pada halaman formulir tambah item baru.
+  + pada `gamelist_form.dart` tambahkan kode berikut pada onchange() jika belum ada.
+    ```
+     if (_formKey.currentState!.validate()) {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: const Text('Produk berhasil tersimpan'),
+                            content: SingleChildScrollView(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('Nama: $_name'),
+                                  Text('Genre: $_genre'),
+                                  Text('Platform: $_platform'),
+                                  Text('Jumlah: $_amount'),
+                                  Text('Price: $_price'),
+                                  Text('Description: $_description')
+                                ],
+                              ),
+                            ),
+                            actions: [
+                              TextButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                              ),
+                            ],
+                          ),
+                        },
+                      ),
+                      _formKey.currentState!.reset();
+                    }
+    ```
++ [x] Membuat sebuah drawer pada aplikasi.
+  
+  - Buat folder `widgets` pada lib dan buat file `left_drawer.dart` di dalamnya
+  - tambakan kode berikut di `left_drawer.dart`
+      ```
+      ListTile(
+          leading: const Icon(Icons.home_outlined),
+          title: const Text('Halaman Utama'),
+          // Bagian redirection ke MyHomePage
+          onTap: () {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MyHomePage(),
+                ));
+          },
+        ),
+        ListTile(
+          leading: const Icon(Icons.add_shopping_cart),
+          title: const Text('Tambah Produk'),
+          // Bagian redirection ke ShopFormPage
+          onTap: () {
+            Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const ShopFormPage(),
+            ));
+          },
+        ),
+      ```
+  - Tambahkan `drawer: LeftDrawer()` pada `menu.dart`
+  - Tambahkan `drawer: LeftDrawer()` pada `gamelist_form.dart`
+</deatils>

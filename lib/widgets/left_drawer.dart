@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:game_sthar/screens/menu.dart';
 import 'package:game_sthar/screens/gamelist_form.dart';
+import 'package:game_sthar/screens/item_show.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -59,6 +60,18 @@ class LeftDrawer extends StatelessWidget {
               context,
               MaterialPageRoute(
                   builder: (context) => const ShopFormPage(),
+              ));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.gamepad),
+            title: const Text('Lihat Item'),
+            // Bagian redirection ke ShopFormPage
+            onTap: () {
+              Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const ShopShowItem(),
               ));
             },
           ),

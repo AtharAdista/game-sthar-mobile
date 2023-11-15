@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:game_sthar/screens/gamelist_form.dart';
+import 'package:game_sthar/screens/item_show.dart';
 import 'package:game_sthar/widgets/game_card.dart';
 import 'package:game_sthar/widgets/left_drawer.dart';
+
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
@@ -11,6 +13,7 @@ class MyHomePage extends StatelessWidget {
     ShopItem("Tambah Item", Icons.add_shopping_cart),
     ShopItem("Logout", Icons.logout),
   ];
+
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -32,7 +35,7 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
       ),
-      drawer: const LeftDrawer(),
+      drawer: LeftDrawer(),
       body: SingleChildScrollView(
         // Widget wrapper yang dapat discroll
         child: Padding(
@@ -97,6 +100,11 @@ class ShopCard extends StatelessWidget {
               Navigator.push(context,
                     MaterialPageRoute(
                       builder: (context) => const ShopFormPage()));
+            }
+            if (item.name == "Lihat Item"){
+              Navigator.push(context,
+                    MaterialPageRoute(
+                      builder: (context) => const ShopShowItem()));
             }
         },
         child: Container(
