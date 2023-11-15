@@ -91,7 +91,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
               child: TextFormField(
                 decoration: InputDecoration(
                   hintText: "Platform",
-                  labelText: "Paltform",
+                  labelText: "Platform",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),

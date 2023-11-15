@@ -312,27 +312,48 @@ Single child layout widget adalah suatu widget yang hanya dapat memiliki satu wi
 
 <b>Multi-child layout widgets</b></br>
 Multi child layout adalah widget yang dapat menampung lebih dari satu widget anak. Digunakan ketika membutuhkan banyak widget anak dalam satu widget parent.
-+ Column
-+ CustomMultiChildLayout
-+ Flow
-+ GridView
-+ IndexedStack
-+ LayoutBuilder
-+ ListBody
-+ ListView
-+ Row
-+ Stack
-+ Table
-+ Wrap
+
++ Column</br>
+  Widget yang menampilkan turunannya dalam array vertikal
++ CustomMultiChildLayout </br>
++ Flow </br>
+  Widget yang memosisikan children elemen berdasarkan FlowDelegate
++ GridView </br>
+  Menampilkan item dalam array 2D (baris dan kolom dua dimensi).
++ IndexedStack </br>
+  Stack yang menampilkan satu anak dari daftar anak.
++ LayoutBuilder </br> 
+  Membangun pohon widget yang dapat bergantung pada ukuran widget induk.
++ ListBody </br>
+  Widget tata letak yang menyusun turunannya secara berurutan sepanjang sumbu tertentu, dengan default pada sumbu vertikal.
++ ListView </br>
+  widget scroll yang paling umum digunakan. Ini menampilkan anak-anaknya satu demi satu dalam arah scroll.
++ Row </br> 
+  Tata letak daftar widget anak dalam arah horizontal.
++ Stack </br>
+  Untuk stack beberapa anak dengan cara yang sederhana.
++ Table </br>
+  Menampilkan widget anak dalam baris dan kolom.
++ Wrap </br>
+  Menampilkan turunannya dalam horizontal atau vertikal.
 
 <b>Sliver widgets</b></br>
 Sliver widgets adalah widgets yang berhubungan dengan scroll. Digunakan jika ingin membuat elemen antarmuka pengguna yang dapat di scroll
-+ CupertinoSliverNavigationBar
-+ CustomScrollView
-+ SliverAppBar
-+ SliverChildBuilderDelegate
-+ SliverChildListDelegate
-+ SliverFixedExtentList
+
++ CupertinoSliverNavigationBar </br>
+  Bilah navigasi bergaya IOS.
++ CustomScrollView </br>
+  ScrollView yang membuat efek scroll khusus.
++ SliverAppBar </br>
+  Bilah aplikasi desain material yang terintegrasi dengan CustomScrollView.
++ SliverChildBuilderDelegate </br>
+  Menyuplai anak-anak untuk sliver menggunakan callback builder
++ SliverChildListDelegate </br> 
+  Memasok anak-anak untuk sliver menggunakan daftar eksplisit
++ SliverFixedExtentList </br>
+  Sliver yang menempatkan beberapa turunan kotak dengan luas sumbu utama yang sama dalam array linier.
++ SliverGrid  </br>
+  Sebuah sliver yang menempatkan beberapa box anak dalam susunan dua dimensi.
 
 
 
