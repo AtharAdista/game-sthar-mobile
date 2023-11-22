@@ -198,6 +198,18 @@ class _ShopFormPageState extends State<ShopFormPage> {
                   ),
                   onPressed: () async {
                       if (_formKey.currentState!.validate()) {
+                         ItemData newItem = ItemData(
+                        id:  UniqueKey().toString(),
+                        judul: _name,
+                        harga: _price,
+                        jumlah: _amount,
+                        deskripsi: _description,
+                        platform: _platform,
+                        genre: _category,
+                      );
+
+                      // Add the new item to the list
+                      productList.add(newItem);
                           // Kirim ke Django dan tunggu respons
                           final response = await request.postJson(
                           "http://127.0.0.1:8000/create-flutter/",
