@@ -945,7 +945,7 @@ Data diambil dari url yang fungsinya ada di Django, nantinya respons dari url te
         CSRF_COOKIE_SAMESITE = 'None'
         SESSION_COOKIE_SAMESITE = 'None'
        ```
-    + buat method login di `authentication/views.py`
+    + buat method login dan logout di `authentication/views.py`
       ```
       from django.shortcuts import render
       from django.contrib.auth import authenticate, login as auth_login
@@ -977,6 +977,23 @@ Data diambil dari url yang fungsinya ada di Django, nantinya respons dari url te
               return JsonResponse({
                   "status": False,
                   "message": "Login gagal, periksa kembali email atau kata sandi."
+              }, status=401)
+              
+      @csrf_exempt
+      def logout(request):
+          username = request.user.username
+
+          try:
+              auth_logout(request)
+              return JsonResponse({
+                  "username": username,
+                  "status": True,
+                  "message": "Logout berhasil!"
+              }, status=200)
+          except:
+              return JsonResponse({
+              "status": False,
+              "message": "Logout gagal."
               }, status=401)
       ```
   + buat urls untuk routing dengan fungsi login
