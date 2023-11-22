@@ -721,7 +721,7 @@ Week 09 : Integrasi Layanan Web Django dengan Aplikasi Flutter
 
 ## 1. Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
 
-Ya kita langsung melakukan parsing data dari JSON dan menyimpannya ke struktur data yang ada seperti array.
+Ya kita langsung melakukan parsing data dari JSON dan menyimpannya ke struktur data yang ada seperti dictionary.
 
 Pemilihan antara menggunakan model atau langsung parse dari JSON sesuai dengan kebutuhan developer.
 
@@ -742,7 +742,7 @@ CookieRequest digunakan untuk mengelola permintaan HTTP yang melibatkan pengguna
 
 
 ## 3. Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
-Buka endpoint JSON pada aplikasi django, kemudian salin JSON yang didapatkan ke situ quicktype, kemudian source type kita atur menjadi JSON, dan language menjadi dart, kemudian tempel JSON ke quicktype dan pilih copy code. Terus bikin file dalam lib/models dengan nama product.dart dan salin hasil dari copy code tadi.
+Buka endpoint JSON pada aplikasi django, kemudian salin JSON yang didapatkan ke situ quicktype, kemudian source type kita atur menjadi JSON, dan language menjadi dart, kemudian tempel JSON ke quicktype dan pilih copy code. Terus bikin file dalam lib/models dengan nama product.dart dan salin hasil dari copy code tadi. terus pada android/app/src/main/AndroidManifest.xml tambahkan kode berikut `<uses-permission android:name="android.permission.INTERNET" />`
 
 <b>Pada list_product.dart</b>
 Data diambil dari url yang fungsinya ada di Django, nantinya respons dari url tersebut akan di decode menjadi json dan disimpan di suatu variabel, kemudian data yang sudah ada di variabel tadi akan dipindahkan kedalam suatu list. kemudian untuk mengambil data, kita akan memanfaatkan FutureBuilder, FutureBuilder memiliki kemampuan untuk menangani proses asinkronus. Data tersebut kemudian akan ditampilkan dengan memanfaatkan ListView.builder. 
