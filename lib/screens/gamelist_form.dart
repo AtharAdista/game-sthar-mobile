@@ -1,6 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:game_sthar/widgets/left_drawer.dart';
-import '../model/item.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
+import '../models/item.dart';
+import 'package:game_sthar/screens/menu.dart';
 
 class ShopFormPage extends StatefulWidget {
   const ShopFormPage({super.key});
@@ -11,7 +16,6 @@ class ShopFormPage extends StatefulWidget {
 
 List<ItemData> productList = [];
 
-
 class _ShopFormPageState extends State<ShopFormPage> {
   final _formKey = GlobalKey<FormState>();
   String _name = "";
@@ -19,11 +23,11 @@ class _ShopFormPageState extends State<ShopFormPage> {
   int _amount = 0;
   String _description = "";
   String _platform = "";
-  String _genre = "";
-
+  String _category = "";
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
         title: const Center(
@@ -67,20 +71,20 @@ class _ShopFormPageState extends State<ShopFormPage> {
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
                 decoration: InputDecoration(
-                  hintText: "Genre",
-                  labelText: "Genre",
+                  hintText: "Category",
+                  labelText: "Category",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),
                 ),
                 onChanged: (String? value) {
                   setState(() {
-                    _genre = value!;
+                    _category = value!;
                   });
                 },
                 validator: (String? value) {
                   if (value == null || value.isEmpty) {
-                    return "Genre tidak boleh kosong!";
+                    return "Category tidak boleh kosong!";
                   }
                   return null;
                 },
@@ -192,54 +196,36 @@ class _ShopFormPageState extends State<ShopFormPage> {
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.indigo),
                   ),
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      // Create a new ItemData object
-                      ItemData newItem = ItemData(
-                        id:  UniqueKey().toString(),
-                        judul: _name,
-                        harga: _price,
-                        jumlah: _amount,
-                        deskripsi: _description,
-                        platform: _platform,
-                        genre: _genre,
-                      );
-
-                      // Add the new item to the list
-                      productList.add(newItem);
-                    }
-                    if (_formKey.currentState!.validate()) {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            title: const Text('Produk berhasil tersimpan'),
-                            content: SingleChildScrollView(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text('Nama: $_name'),
-                                  Text('Genre: $_genre'),
-                                  Text('Platform: $_platform'),
-                                  Text('Jumlah: $_amount'),
-                                  Text('Price: $_price'),
-                                  Text('Description: $_description')
-                                ],
-                              ),
-                            ),
-                            actions: [
-                              TextButton(
-                                child: const Text('OK'),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                      _formKey.currentState!.reset();
-                    }
+                  onPressed: () async {
+                      if (_formKey.currentState!.validate()) {
+                          // Kirim ke Django dan tunggu respons
+                          final response = await request.postJson(
+                          "http://127.0.0.1:8000/create-flutter/",
+                          jsonEncode(<String, String>{
+                              'name': _name,
+                              'price': _price.toString(),
+                              'description': _description,
+                              'amount': _amount.toString(),
+                              'platform': _platform,
+                              'category' : _category,
+                          }));
+                          if (response['status'] == 'success') {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(const SnackBar(
+                              content: Text("Produk baru berhasil disimpan!"),
+                              ));
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => MyHomePage()),
+                              );
+                          } else {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(const SnackBar(
+                                  content:
+                                      Text("Terdapat kesalahan, silakan coba lagi."),
+                              ));
+                          }
+                      }
                   },
                   child: const Text(
                     "Save",

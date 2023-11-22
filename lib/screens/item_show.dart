@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/left_drawer.dart';
 import 'package:game_sthar/screens/gamelist_form.dart';
-import '../model/item.dart';
+import '../models/item.dart';
 
 
 class ShopShowItem extends StatefulWidget {
